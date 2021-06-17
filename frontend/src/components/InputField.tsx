@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import TextareaAutosize from "react-textarea-autosize";
 import getCaretCoordinates from "textarea-caret";
+import Cookies from "js-cookie";
 
 // components
 import Tooltip from "./Tooltip";
@@ -25,6 +26,18 @@ interface IProps {
   addNewLine: (number) => void;
   removeLine: (number) => void;
 }
+
+const setPersonalEmoji = (value) => {
+  const personalEmoji = JSON.parse(Cookies.get("personal-emojis"));
+  if (personalEmoji[value]) {
+    personalEmoji[value] = personalEmoji[value] + 1;
+  } else {
+    personalEmoji[value] = 1;
+  }
+  Cookies.set("personal-emojis", JSON.stringify(personalEmoji), {
+    expires: 30,
+  });
+};
 
 const InputField = ({ init, id, addNewLine, removeLine }: IProps) => {
   const [input, setInput] = useState("");
@@ -80,6 +93,7 @@ const InputField = ({ init, id, addNewLine, removeLine }: IProps) => {
 
   const onOptionClick = (value) => {
     const newInput = input.substring(0, input.length - 1) + value;
+    setPersonalEmoji(value);
     setInput(newInput);
     setSelectEmoji({
       on: false,

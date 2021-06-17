@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Cookies from "js-cookie";
 
 import { postData } from "../utils/api";
 
@@ -15,6 +16,14 @@ interface IProps {
   onOptionClick: (string) => void;
 }
 
+const getPersonalEmoji = () => {
+  const personalEmoji = JSON.parse(Cookies.get("personal-emojis"));
+  const sortable = Object.fromEntries(
+    Object.entries(personalEmoji).sort(([, a]: any, [, b]: any) => b - a)
+  );
+  return Object.keys(sortable).slice(0, 5);
+};
+
 const Tooltip = ({ input, caret, onOptionClick }: IProps) => {
   const [items, setItems] = useState<HTMLElement[]>();
   const [focusItem, setFocusItem] = useState(0);
@@ -25,7 +34,10 @@ const Tooltip = ({ input, caret, onOptionClick }: IProps) => {
     postData("http://localhost:3000/predict", { input: input })
       .then((data) => {
         console.log(data);
-        setOptions(data);
+        setOptions({
+          ...data,
+          personalOption: getPersonalEmoji(),
+        });
       })
       .catch((error) => console.error(error));
   }, []);
@@ -91,7 +103,7 @@ const Tooltip = ({ input, caret, onOptionClick }: IProps) => {
       <div className="tooltip">
         <ul id="list" onKeyDown={onKeyDown}>
           <ul className="inner-list">
-            <label>emotion:</label>
+            <label>sentiment:</label>
             {options?.emotionOption?.map((o, i) => (
               <li
                 tabIndex={i}
@@ -107,9 +119,22 @@ const Tooltip = ({ input, caret, onOptionClick }: IProps) => {
             <label>content:</label>
             {options?.contentOption?.map((o, i) => (
               <li
-                tabIndex={options?.emotionOption?.length + i}
+                tabIndex={options?.contentOption?.length + i}
                 className={`con-option-${i}`}
                 key={`con-option-${i}`}
+                onClick={() => onOptionClick(o)}
+              >
+                {o}
+              </li>
+            ))}
+          </ul>
+          <ul className="inner-list">
+            <label>personal:</label>
+            {options?.personalOption?.map((o, i) => (
+              <li
+                tabIndex={options?.personalOption?.length + i}
+                className={`per-option-${i}`}
+                key={`per-option-${i}`}
                 onClick={() => onOptionClick(o)}
               >
                 {o}
