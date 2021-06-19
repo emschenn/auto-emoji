@@ -16,16 +16,7 @@ content_based = ContentBased()
 @app.route('/')
 @cross_origin()
 def index():
-    return "hello"
-
-
-# @app.before_first_request
-# def load_global_data():
-#     word2vec_path = './GoogleNews-vectors-negative300.bin'
-#     mapping_path = 'emoji_mapping.p'
-#     e2v_path = './emoji2vec.bin'
-#     global content_based
-#     content_based = ContentBased(word2vec_path, e2v_path, mapping_path)
+    return "This is the backend ou auto-emoji project 😉"
 
 
 @app.route('/predict', methods=['POST'])
@@ -39,6 +30,5 @@ def postPredict():
         'contentOption': content_option,
     })
 
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=3000, debug=True, use_reloader=False)
+# if __name__ == '__main__':
+#     app.run(host='0.0.0.0', port=3000, debug=True, use_reloader=False)
