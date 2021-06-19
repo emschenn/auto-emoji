@@ -1,0 +1,7 @@
+numpy
+gensim
+transformers
+torch
+json
+flask
+flask_cors

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Cookies from "js-cookie";
+import { isMobile } from "react-device-detect";
 
 // components
 import InputField from "../../components/InputField";
@@ -101,6 +102,14 @@ const PlayIndex = ({}: IProps) => {
   const [showAllTextModal, setShowAllTextModal] = useState(false);
   const { article, setArticle } = useArticle();
 
+  useEffect(() => {
+    if (isMobile) {
+      alert(
+        "The project is design for the desktop 💻\nPlease open it on desktop / laptop for better experience 💫"
+      );
+    }
+  }, []);
+
   const addNewLine = (id) => {
     const newLineId = new Date().getTime();
     if (id === -1) {
@@ -127,7 +136,7 @@ const PlayIndex = ({}: IProps) => {
 
   const onCopy = () => {
     const elem = document.createElement("textarea");
-    elem.value = Object.values(article).join(" ");
+    elem.value = Object.values(article).join("\n");
     document.body.appendChild(elem);
     elem.select();
     document.execCommand("copy");
@@ -151,9 +160,9 @@ const PlayIndex = ({}: IProps) => {
               <br />
               3. Select the emoji 🎉
               <br />
-              4. <Key text="shift" /> + <Key text="enter" /> to add newline
+              4. <span>shift</span> + <span>enter</span> to add newline
               <br />
-              5. <Key text="shift" /> + <Backspace /> to remove line
+              5. <span>shift</span> + <span>backspace</span> to remove line
             </h2>
           </motion.section>
           <section className="demo">

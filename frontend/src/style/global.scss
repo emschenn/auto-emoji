@@ -66,6 +66,9 @@ h2 {
     @media screen and (min-width: 1024px) {
       padding: 0 7rem 0 6rem;
     }
+    @media screen and (max-width: 512px) {
+      padding-right: 2rem;
+    }
   }
   .link {
     font-size: 1.2rem;
@@ -97,6 +100,9 @@ h2 {
     padding: 0 3rem 0 6rem;
     flex: 4;
   }
+  @media screen and (max-width: 512px) {
+    padding: 0 2rem;
+  }
   h1 {
     margin-block-start: 0;
     font-family: "Montserrat", sans-serif;
@@ -107,9 +113,18 @@ h2 {
   }
   h2 {
     line-height: 2.2rem;
-    svg {
-      transform: translateY(-0.35rem) scale(0.7);
-      margin: -1.5rem;
+    span {
+      border: 1px #000 solid;
+      border-radius: 6px;
+      padding: 0.2rem 0.3rem;
+      font-size: 1rem;
+    }
+    @media screen and (max-width: 512px) {
+      font-size: 1rem;
+      line-height: 2rem;
+      span {
+        font-size: 0.8rem;
+      }
     }
   }
 }
@@ -307,6 +322,7 @@ h2 {
 }
 
 .all-text-modal {
+  white-space: pre-line;
   background-color: $yellow;
   border-radius: 1rem;
   position: absolute;
@@ -328,5 +344,9 @@ h2 {
     border-left: 1.5rem solid transparent;
     border-right: 1.5rem solid transparent;
     border-bottom: 1.5rem solid $yellow;
+  }
+  @media screen and (max-width: 1024px) {
+    top: 3rem;
+    right: 3rem;
   }
 }

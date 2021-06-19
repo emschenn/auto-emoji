@@ -16,7 +16,7 @@ const AllTextModal = ({ text }: IProps) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
     >
-      {Object.values(article).join(" ")}
+      {Object.values(article).join("\n")}
     </motion.div>
   );
 };
