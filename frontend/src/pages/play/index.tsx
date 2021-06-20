@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Cookies from "js-cookie";
 import { isMobile } from "react-device-detect";
 
 // components
@@ -19,70 +18,6 @@ const deleteOne = (arr, index) => [
   ...arr.slice(0, index),
   ...arr.slice(index + 1),
 ];
-
-const Backspace = () => (
-  <svg width="100" height="50" xmlns="http://www.w3.org/2000/svg">
-    <g>
-      <rect
-        fill="none"
-        x="18.64464"
-        y="8.88531"
-        width="60"
-        height="33.17527"
-        id="svg_18"
-        rx="10"
-        strokeWidth="1.4"
-        stroke="#000"
-      />
-      <g stroke="null" id="svg_6">
-        <path
-          stroke="null"
-          id="svg_5"
-          d="m60.99868,16.0293l-18.54821,0a3.20043,3.20043 0 0 0 -2.26437,0.93807l-7.53605,7.53555c-0.62538,0.62538 -0.62538,1.63899 0,2.26387l7.53605,7.53605c0.60036,0.60036 1.41485,0.93807 2.26387,0.93807l18.54871,0c1.76857,0 3.20193,-1.43337 3.20193,-3.20193l0,-12.80774c0,-1.76857 -1.43337,-3.20193 -3.20193,-3.20193zm-4.23706,12.71068c0.31269,0.31269 0.31269,0.8195 0,1.13218l-1.13168,1.13168c-0.31269,0.31269 -0.8195,0.31269 -1.13218,0l-3.10488,-3.10488l-3.10488,3.10488c-0.31269,0.31269 -0.8195,0.31269 -1.13218,0l-1.13168,-1.13168c-0.31269,-0.31269 -0.31269,-0.8195 0,-1.13218l3.10488,-3.10488l-3.10488,-3.10488c-0.31269,-0.31269 -0.31269,-0.8195 0,-1.13218l1.13168,-1.13168c0.31269,-0.31269 0.8195,-0.31269 1.13218,0l3.10488,3.10488l3.10488,-3.10488c0.31269,-0.31269 0.8195,-0.31269 1.13218,0l1.13168,1.13168c0.31269,0.31269 0.31269,0.8195 0,1.13218l-3.10488,3.10488l3.10488,3.10488z"
-          fill="currentColor"
-        />
-      </g>
-    </g>
-  </svg>
-);
-
-const Key = ({ text }) => (
-  <svg
-    width="100"
-    height="50"
-    xmlns="http://www.w3.org/2000/svg"
-    style={{ margin: "-1.5rem -1rem" }}
-  >
-    <g>
-      <rect
-        stroke="#000"
-        strokeWidth="1.4"
-        rx="10"
-        id="svg_18"
-        height="33.17527"
-        width="85"
-        y="8.88531"
-        x="7.53357"
-        fill="none"
-      />
-      <text
-        fontStyle="normal"
-        fontWeight="normal"
-        textAnchor="start"
-        fontFamily="monospace"
-        fontSize="24"
-        id="svg_3"
-        y="32.28814"
-        x="14.22141"
-        strokeWidth="0"
-        stroke="#000"
-        fill="#000000"
-      >
-        {text}
-      </text>
-    </g>
-  </svg>
-);
 
 const useArticle = () => {
   const [article, setArticle] = useState<object>([]);

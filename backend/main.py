@@ -2,23 +2,19 @@
 
 from flask import Flask, request, jsonify
 from flask_cors import CORS, cross_origin
-from content_based import ContentBased
+from content.BERT.content_bert import ContentBased
+# import sentiment.sentiment
 
 app = Flask(__name__)
 CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
+content_based = ContentBased()
 
 
 @app.route('/')
 @cross_origin()
 def index():
     return "This is the backend of auto-emoji project 😉"
-
-
-@app.route('/predict', methods=['GET'])
-def setPredict():
-    global content_based
-    content_based = ContentBased()
 
 
 @app.route('/predict', methods=['POST'])

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Cookies from "js-cookie";
-
 import { postData } from "../utils/api";
 
 interface ICaretPos {
@@ -31,7 +30,7 @@ const Tooltip = ({ input, caret, onOptionClick }: IProps) => {
   const [options, setOptions] = useState(null);
 
   useEffect(() => {
-    postData("http://localhost:3000/predict", { input: input })
+    postData(`${process.env.GATSBY_API_URL}/predict`, { input: input })
       .then((data) => {
         console.log(data);
         setOptions({
@@ -48,6 +47,7 @@ const Tooltip = ({ input, caret, onOptionClick }: IProps) => {
     const items = [
       ...list.children[0].getElementsByTagName("li"),
       ...list.children[1].getElementsByTagName("li"),
+      ...list.children[2].getElementsByTagName("li"),
     ];
     setItems(items);
     items[focusItem].focus();
@@ -59,6 +59,7 @@ const Tooltip = ({ input, caret, onOptionClick }: IProps) => {
       const items = [
         ...list.children[0].getElementsByTagName("li"),
         ...list.children[1].getElementsByTagName("li"),
+        ...list.children[2].getElementsByTagName("li"),
       ];
       items.forEach((i) => {
         if (i === document.activeElement) {
