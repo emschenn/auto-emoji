@@ -15,6 +15,7 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
+    "@types/react-helmet": "^6.1.1",
     "@webscopeio/react-textarea-autocomplete": "^4.7.3",
     "dotenv": "^10.0.0",
     "framer-motion": "^4.1.17",
@@ -22,6 +23,7 @@
     "gatsby-plugin-config": "^1.0.7",
     "gatsby-plugin-image": "^1.6.0",
     "gatsby-plugin-manifest": "^3.7.1",
+    "gatsby-plugin-react-helmet": "^4.7.1",
     "gatsby-plugin-sass": "^4.6.0",
     "gatsby-plugin-sharp": "^3.6.0",
     "gatsby-source-filesystem": "^3.6.0",
@@ -32,6 +34,7 @@
     "react-card-flip": "^1.1.1",
     "react-device-detect": "^1.17.0",
     "react-dom": "^17.0.1",
+    "react-helmet": "^6.1.0",
     "react-loader-spinner": "^4.0.0",
     "react-textarea-autosize": "^8.3.3",
     "sass": "^1.34.1",

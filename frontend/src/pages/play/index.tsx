@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { isMobile } from "react-device-detect";
+import { Helmet } from "react-helmet";
 
 // components
 import InputField from "../../components/InputField";
@@ -81,6 +82,10 @@ const PlayIndex = ({}: IProps) => {
   return (
     <ArticleContext.Provider value={{ article, setArticle }}>
       <AnimatePresence>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>Auto Emoji</title>
+        </Helmet>
         <main>
           <motion.section
             className="tutorial"

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "gatsby";
 import { motion, AnimatePresence } from "framer-motion";
+import { Helmet } from "react-helmet";
 
 import "../style/global.scss";
 
@@ -16,6 +17,10 @@ const IndexPage = () => {
   return (
     <AnimatePresence>
       <motion.main>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>Auto Emoji</title>
+        </Helmet>
         <motion.section
           className="show"
           initial={{ opacity: 0 }}
