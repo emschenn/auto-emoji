@@ -5,6 +5,7 @@ export const postData = (url, data) => {
     cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
     credentials: "same-origin", // include, same-origin, *omit
     headers: {
+      "Access-Control-Allow-Origin":"*",
       "user-agent": "Mozilla/4.0 MDN Example",
       "content-type": "application/json",
     },
