@@ -28,7 +28,16 @@ interface IProps {
 }
 
 const setPersonalEmoji = (value) => {
-  const personalEmoji = JSON.parse(Cookies.get("personal-emojis"));
+  const cookieData = Cookies.get("personal-emojis");
+  if (!cookieData) {
+    let personalEmoji = {};
+    personalEmoji[value] = 1;
+    Cookies.set("personal-emojis", JSON.stringify(personalEmoji), {
+      expires: 30,
+    });
+    return;
+  }
+  const personalEmoji = JSON.parse(cookieData);
   if (personalEmoji[value]) {
     personalEmoji[value] = personalEmoji[value] + 1;
   } else {

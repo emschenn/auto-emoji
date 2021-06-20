@@ -27,5 +27,16 @@ module.exports = {
         allExtensions: true, // defaults to false
       },
     },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `auto-emoji`,
+        short_name: `auto-emoji`,
+        start_url: `/`,
+        background_color: `#ffffff`,
+        theme_color: `#ffffff`,
+        icon: `src/images/icon.png`, // This path is relative to the root of the site.
+      },
+    },
   ],
 };

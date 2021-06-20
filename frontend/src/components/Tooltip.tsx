@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { postData } from "../utils/api";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import Loader from "react-loader-spinner";
 
 interface ICaretPos {
   start: number;
@@ -16,11 +18,15 @@ interface IProps {
 }
 
 const getPersonalEmoji = () => {
-  const personalEmoji = JSON.parse(Cookies.get("personal-emojis"));
-  const sortable = Object.fromEntries(
-    Object.entries(personalEmoji).sort(([, a]: any, [, b]: any) => b - a)
-  );
-  return Object.keys(sortable).slice(0, 5);
+  const cookieData = Cookies.get("personal-emojis");
+  if (cookieData) {
+    const personalEmoji = JSON.parse(cookieData);
+    const sortable = Object.fromEntries(
+      Object.entries(personalEmoji).sort(([, a]: any, [, b]: any) => b - a)
+    );
+    return Object.keys(sortable).slice(0, 5);
+  }
+  return [];
 };
 
 const Tooltip = ({ input, caret, onOptionClick }: IProps) => {
@@ -105,42 +111,54 @@ const Tooltip = ({ input, caret, onOptionClick }: IProps) => {
         <ul id="list" onKeyDown={onKeyDown}>
           <ul className="inner-list">
             <label>sentiment:</label>
-            {options?.sentimentOption?.map((o, i) => (
-              <li
-                tabIndex={i}
-                className={`emo-option-${i}`}
-                key={`emo-option-${i}`}
-                onClick={() => onOptionClick(o)}
-              >
-                {o}
-              </li>
-            ))}
+            {options?.sentimentOption ? (
+              options?.sentimentOption?.map((o, i) => (
+                <li
+                  tabIndex={i}
+                  className={`emo-option-${i}`}
+                  key={`emo-option-${i}`}
+                  onClick={() => onOptionClick(o)}
+                >
+                  {o}
+                </li>
+              ))
+            ) : (
+              <Loader type="ThreeDots" color="#ccc" height={10} width={80} />
+            )}
           </ul>
           <ul className="inner-list">
             <label>content:</label>
-            {options?.contentOption?.map((o, i) => (
-              <li
-                tabIndex={options?.contentOption?.length + i}
-                className={`con-option-${i}`}
-                key={`con-option-${i}`}
-                onClick={() => onOptionClick(o)}
-              >
-                {o}
-              </li>
-            ))}
+            {options?.contentOption ? (
+              options?.contentOption?.map((o, i) => (
+                <li
+                  tabIndex={options?.contentOption?.length + i}
+                  className={`con-option-${i}`}
+                  key={`con-option-${i}`}
+                  onClick={() => onOptionClick(o)}
+                >
+                  {o}
+                </li>
+              ))
+            ) : (
+              <Loader type="ThreeDots" color="#ccc" height={10} width={80} />
+            )}
           </ul>
           <ul className="inner-list">
             <label>personal:</label>
-            {options?.personalOption?.map((o, i) => (
-              <li
-                tabIndex={options?.personalOption?.length + i}
-                className={`per-option-${i}`}
-                key={`per-option-${i}`}
-                onClick={() => onOptionClick(o)}
-              >
-                {o}
-              </li>
-            ))}
+            {options?.personalOption ? (
+              options?.personalOption?.map((o, i) => (
+                <li
+                  tabIndex={options?.personalOption?.length + i}
+                  className={`per-option-${i}`}
+                  key={`per-option-${i}`}
+                  onClick={() => onOptionClick(o)}
+                >
+                  {o}
+                </li>
+              ))
+            ) : (
+              <Loader type="ThreeDots" color="#ccc" height={10} width={80} />
+            )}
           </ul>
         </ul>
       </div>
