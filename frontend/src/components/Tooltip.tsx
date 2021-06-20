@@ -105,7 +105,7 @@ const Tooltip = ({ input, caret, onOptionClick }: IProps) => {
         <ul id="list" onKeyDown={onKeyDown}>
           <ul className="inner-list">
             <label>sentiment:</label>
-            {options?.emotionOption?.map((o, i) => (
+            {options?.sentimentOption?.map((o, i) => (
               <li
                 tabIndex={i}
                 className={`emo-option-${i}`}
