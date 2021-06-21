@@ -1,4 +1,4 @@
-# 😉 Auto Emoji
+# Auto Emoji 😉
 <p align="center">
   <img src="https://i.imgur.com/4O6QgfK.gif" width="600" >
   <br/>
@@ -6,7 +6,6 @@
 </p>
 <br/>
 
-Auto Emoji is an emoji assisting tool. Type a sentence, and the system will recommend a list of emoji based on your phrase.  
 
 ### Frontend
 
