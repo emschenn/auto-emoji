@@ -6,7 +6,7 @@
 </p>
 <br/>
 
-Auto Emoji 😉 is an emoji assisting tool. Type a sentence ⌨️ and the system will recommend a list of emoji based on your phrase 💬
+Auto Emoji 😉 is an emoji assisting tool. Type a sentence ⌨️ and the system will recommend a list of emoji based on your phrase 💬<br/>
 This is a course project for NTU AI Course by prof. Jane Hsu, and more details can be seen [here](https://docs.google.com/presentation/d/1dyVIA0jQz6Sq3L_SpH0Yi8RRa_AJ6FfacfU97M1HSao/edit?pli=1#slide=id.ge0a47f8e25_0_3).
 
 
